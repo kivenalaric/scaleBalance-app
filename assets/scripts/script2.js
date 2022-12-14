@@ -18,11 +18,11 @@ calculate.addEventListener('click', (e) => {
     alert(
       'Weight added is less or more than two integers. Only two comma seperated weights can be added'
     )
-  } else {
-    // the scale balancing is processed by calling the balanceScale function
-    const output = balanceScale(elementoneArr, elementtwoArr)
-    display.innerHTML = result
   }
+    // the scale balancing is processed by calling the balanceScale function
+const result2 = balanceScale(elementoneArr, elementtwoArr)
+display.innerHTML = result
+return result2
 })
 
 
@@ -51,6 +51,6 @@ function balanceScale (elementone, elementtwo) {
         balance = true
       }
     }
-  }
+}
   return result
 }
