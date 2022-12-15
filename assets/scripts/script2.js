@@ -1,14 +1,12 @@
 const calculate = document.querySelector('#calculate')
 const display = document.querySelector('#display')
-
 let result
 calculate.addEventListener('click', (e) => {
   const element1 = document.querySelector('#element1').value
   const element2 = document.querySelector('#element2').value
   if (element1 === '') {
     alert('Please input two weights to balance')
-  }
-  else if (element2 === '') {
+  } else if (element2 === '') {
     alert('Please input optional weights to select from for scale balancing')
   }
   const elementoneArr = element1.split(',').map(Number)
@@ -20,14 +18,13 @@ calculate.addEventListener('click', (e) => {
     )
   } else {
   // the scale balancing is processed by calling the balanceScale function
-  const result2 = balanceScale(elementoneArr, elementtwoArr)
-  display.innerHTML = result
-  return result2
+    const result2 = balanceScale(elementoneArr, elementtwoArr)
+    display.innerHTML = result
+    return result2
   }
 })
 
 function balanceScale (elementone, elementtwo) {
-  let balance
   const diff = elementone[1] - elementone[0]
   if (diff === 0) {
     result = 'scale is balanced'
@@ -37,7 +34,6 @@ function balanceScale (elementone, elementtwo) {
   for (let z = 0; z < elementtwo.length; z++) {
     if (elementtwo[z] === diff) {
       result = [elementtwo[z]]
-      balance = true
       return result
     }
   }
@@ -45,14 +41,12 @@ function balanceScale (elementone, elementtwo) {
     for (let j = 0; j < elementtwo.length; j++) {
       if (elementtwo[i] + elementtwo[j + 1] === diff) {
         result = [elementtwo[i], elementtwo[j + 1]]
-        balance = true
       } else if (elementtwo[i] + diff === elementtwo[j + 1]) {
         result = [elementtwo[i], elementtwo[j + 1]]
-        balance = true
+
         return result
       } else {
         result = 'no number available to balance'
-        balance = false
       }
     }
   }
